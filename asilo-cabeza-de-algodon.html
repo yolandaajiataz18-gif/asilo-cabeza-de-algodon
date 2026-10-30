@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cabeza de Algodón · Sistema del asilo</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f1f8;--card:#fff;--ink:#2a1b35;--mut:#7a6585;--line:#e6dcec;--acc:#6f2c91;--acc2:#efe3f5;--warn:#9a5b00;--bad:#a4262c;--ok:#2d6a3e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1222;--card:#251a30;--ink:#efe8f5;--mut:#b3a3c2;--line:#3a2c48;--acc:#c58be0;--acc2:#33233f;--warn:#e0a84a;--bad:#ef8a8f;--ok:#7fcf93}}
+:root[data-theme="dark"]{--bg:#1a1222;--card:#251a30;--ink:#efe8f5;--mut:#b3a3c2;--line:#3a2c48;--acc:#c58be0;--acc2:#33233f;--warn:#e0a84a;--bad:#ef8a8f;--ok:#7fcf93}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;margin:0}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:16px 28px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+#fecha{flex:1;font-size:18px}
+header label{color:var(--mut);font-size:13px}
+.usr{font-weight:600}
+select,input,textarea,button{font:inherit;color:inherit}
+select,input,textarea{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:7px 9px;width:100%}
+header select{width:auto}
+h1,h2,h3{font-family:inherit}
+.app{display:flex;min-height:100dvh}
+aside{width:260px;flex:none;background:#3c1450;color:#f1e6f7}
+.brand{padding:26px 24px 18px;border-bottom:1px solid #ffffff22}
+.brand h1{font-size:22px;line-height:1.25}
+.brand p{margin:6px 0 0;font-size:14px;color:#d3bde0}
+nav{display:flex;flex-direction:column;padding:8px 0}
+nav button{background:none;border:0;border-left:4px solid transparent;color:#f1e6f7;text-align:left;padding:14px 24px;cursor:pointer;font-size:16px}
+nav button.on{background:#ffffff1f;border-color:#c58be0;font-weight:600}
+.content{flex:1;min-width:0}
+.bell{background:var(--acc2);color:var(--acc);border:0;border-radius:10px;padding:12px 18px;cursor:pointer;font-size:16px}
+.bell b{background:#d6336c;color:#fff;border-radius:50%;padding:1px 7px;font-size:13px;margin-left:6px}
+main{max-width:1100px;margin:0 auto;padding:36px 32px}
+.card{border-radius:16px}
+.eyebrow{margin:0;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--acc)}
+.big{font-size:44px;font-weight:400;margin:4px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:24px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 28px}
+.kpi span{display:block}
+.kpi b{font-size:38px;color:var(--acc)}
+#login{position:fixed;inset:0;background:var(--bg);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px}
+.lbox{width:100%;max-width:400px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px}
+.lbox h1{font-size:24px;margin-bottom:4px}
+.lbox label{margin-top:14px}
+@media (max-width:760px){.app{flex-direction:column}aside{width:auto}nav{flex-direction:row;overflow-x:auto}nav button{border-left:0;border-bottom:3px solid transparent;white-space:nowrap}nav button.on{border-color:#c58be0}main{padding:20px 16px}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px}
+.card h3{font-size:17px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+label.f{display:block;font-size:13px;color:var(--mut)}
+label.f input,label.f select,label.f textarea{margin-top:3px;color:var(--ink)}
+.err{color:var(--bad);font-size:12px;min-height:16px}
+.bad{border-color:var(--bad)!important}
+.btn{background:var(--acc);color:var(--card);border:0;border-radius:6px;padding:8px 14px;cursor:pointer}
+.btn.sec{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,nav button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin-top:10px}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;background:var(--acc2);color:var(--acc)}
+.tag.w{color:var(--warn)}.tag.o{color:var(--ok)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:500}
+.mut{color:var(--mut);font-size:13px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:6px;display:none;z-index:20}
+</style>
+</head>
+<body>
+<div class="app" id="app" style="display:none"><aside><div class="brand"><h1>✚ Asilo Cabeza de Algodón</h1><p>Atención y gestión integral</p></div><nav id="nav"></nav></aside>
+<div class="content"><header>
+<span id="fecha"></span><button class="bell" onclick="tab='mail';draw()">🔔 Notificaciones <b id="nb">0</b></button>
+<span hidden>
+<select id="rol" onchange="setRole(this.value)">
+<option value="admin">Administradora</option><option value="medico">Médico general</option><option value="fund">Fundación</option><option value="esp">Médico especialista</option><option value="lab">Laboratorio y farmacia</option><option value="caja">Caja</option>
+</select></span><span class="usr" id="usr"></span><button class="btn sec" onclick="logout()">Cerrar sesión</button>
+</header>
+<main id="main"></main></div></div>
+<div id="login"><div class="lbox"><h1>✚ Asilo Cabeza de Algodón</h1><p class="mut">Ingrese con su correo y contraseña.</p>
+<label class="f">Correo electrónico<input id="lemail" type="email" autocomplete="username" placeholder="nombre@cabezadealgodon.org" onkeydown="if(event.key=='Enter')entrar()"></label>
+<label class="f">Contraseña<input id="lpass" type="password" autocomplete="current-password" onkeydown="if(event.key=='Enter')entrar()"></label>
+<span class="err" id="lerr" role="alert"></span>
+<div class="row"><button class="btn" onclick="entrar()">Ingresar</button></div></div></div>
+<div id="toast" role="status"></div>
+<script>
+const DESC=0.20,CONSULTA=150;
+const ESPS=['Geriatría','Cardiología','Neurología','Psiquiatría','Traumatología'];
+const HOY=new Date().toISOString().slice(0,10);
+const db={fam:[{id:1,nombre:'Carlos Méndez',correo:'carlos.mendez@ejemplo.com'},{id:2,nombre:'Lucía Racancoj',correo:'lucia.racancoj@ejemplo.com'},{id:3,nombre:'Mario Ajú',correo:'mario.aju@ejemplo.com'},{id:4,nombre:'Ana Cux',correo:'ana.cux@ejemplo.com'},{id:5,nombre:'Pedro Sicán',correo:'pedro.sican@ejemplo.com'},{id:6,nombre:'Elena Morales',correo:'elena.morales@ejemplo.com'}],
+pac:[{id:1,nombre:'Rosa Elena Tzoc',nac:'1941-03-12',fam:1,psico:'Demencia leve',meds:'Donepezilo 5 mg'},{id:2,nombre:'José Manuel Ajú',nac:'1938-07-02',fam:3,psico:'Depresión',meds:'Sertralina 50 mg'},{id:3,nombre:'María Concepción Morales',nac:'1944-11-25',fam:6,psico:'Trastorno de ansiedad',meds:'Losartán 50 mg; Alprazolam 0.25 mg'},{id:4,nombre:'Andrés Sicán',nac:'1936-01-18',fam:5,psico:'Alzheimer moderado',meds:'Memantina 10 mg'},{id:5,nombre:'Juana Cux',nac:'1946-05-30',fam:4,psico:'',meds:'Metformina 850 mg'},{id:6,nombre:'Tomás Racancoj',nac:'1939-09-09',fam:2,psico:'Depresión asociada a Parkinson',meds:'Levodopa 250 mg'}],
+med:[{id:1,nombre:'Dr. Pérez',esp:'Geriatría'},{id:2,nombre:'Dra. López',esp:'Cardiología'},{id:3,nombre:'Dra. Ramos',esp:'Neurología'},{id:4,nombre:'Dr. Castillo',esp:'Psiquiatría'},{id:5,nombre:'Dra. Xiloj',esp:'Traumatología'},{id:6,nombre:'Dr. Herrera',esp:'Geriatría'}],
+sol:[
+{id:1,pac:1,esp:'Neurología',motivo:'Pérdida de memoria reciente',enf:'Enf. Gloria Pérez',estado:'Atendida',medico:{id:3,nombre:'Dra. Ramos',esp:'Neurología'},fecha:'2026-10-20',hora:'09:00',diag:'Deterioro cognitivo leve, se ajusta dosis',obs:'Control en 3 meses',labs:[{nombre:'Hemograma',costo:60,resultado:'Valores normales'}],meds:[{nombre:'Donepezilo 10 mg',cant:30,dias:30,costo:180,entregado:true}],pagado:true,pagadoFund:false},
+{id:2,pac:2,esp:'Psiquiatría',motivo:'Control de depresión',enf:'Enf. Luis Tun',estado:'Atendida',medico:{id:4,nombre:'Dr. Castillo',esp:'Psiquiatría'},fecha:'2026-10-22',hora:'10:30',diag:'Depresión moderada, estable',obs:'Mantener tratamiento',labs:[{nombre:'Perfil tiroideo',costo:120,resultado:'TSH normal'}],meds:[{nombre:'Sertralina 50 mg',cant:30,dias:30,costo:95,entregado:true}],pagado:false,pagadoFund:false},
+{id:3,pac:4,esp:'Geriatría',motivo:'Evaluación general trimestral',enf:'Enf. Gloria Pérez',estado:'Asignada',medico:{id:1,nombre:'Dr. Pérez',esp:'Geriatría'},fecha:HOY,hora:'08:30',labs:[],meds:[],pagado:false,pagadoFund:false},
+{id:4,pac:3,esp:'Cardiología',motivo:'Presión arterial elevada',enf:'Enf. Luis Tun',estado:'Asignada',medico:{id:2,nombre:'Dra. López',esp:'Cardiología'},fecha:HOY,hora:'11:00',labs:[],meds:[],pagado:false,pagadoFund:false},
+{id:5,pac:5,esp:'Traumatología',motivo:'Dolor en rodillas al caminar',enf:'Enf. Rosa Cac',estado:'Pendiente',labs:[],meds:[],pagado:false,pagadoFund:false},
+{id:6,pac:6,esp:'Neurología',motivo:'Temblor en reposo más intenso',enf:'Enf. Gloria Pérez',estado:'Pendiente',labs:[],meds:[],pagado:false,pagadoFund:false}],
+mov:[{tipo:'Donación',concepto:'Fundación Esperanza (Empresa nacional)',monto:5000},{tipo:'Donación',concepto:'Global Care Foundation (Empresa internacional)',monto:12000},{tipo:'Donación',concepto:'Ministerio de Desarrollo (Gobierno)',monto:8000},{tipo:'Donación',concepto:'Familia Barrios (Persona particular)',monto:750},{tipo:'Cuota mensual',concepto:'Cuota de octubre, familia Méndez',monto:600},{tipo:'Cuota mensual',concepto:'Cuota de octubre, familia Ajú',monto:600},{tipo:'Gasto',concepto:'Pago de energía eléctrica',monto:1450},{tipo:'Gasto',concepto:'Pago de agua',monto:380},{tipo:'Cobro',concepto:'Visita de Rosa Elena Tzoc',monto:312}],
+mail:[{para:'carlos.mendez@ejemplo.com',asunto:'Solicitud de cita médica para Rosa Elena Tzoc',cuerpo:'Estado del paciente: en espera de cita. Motivo: Pérdida de memoria reciente. Referido a la especialidad de Neurología; la fundación asignará el médico y el horario.',fecha:'18/10/2026, 9:15:00'},{para:'carlos.mendez@ejemplo.com',asunto:'Cita asignada para Rosa Elena Tzoc',cuerpo:'Referido a Dra. Ramos (Neurología) el 2026-10-20 a las 09:00. Acompañará Enf. Gloria Pérez.',fecha:'19/10/2026, 14:02:00'},{para:'ana.cux@ejemplo.com',asunto:'Solicitud de cita médica para Juana Cux',cuerpo:'Estado del paciente: en espera de cita. Motivo: Dolor en rodillas al caminar. Referido a la especialidad de Traumatología; la fundación asignará el médico y el horario.',fecha:'29/10/2026, 10:40:00'},{para:'lucia.racancoj@ejemplo.com',asunto:'Solicitud de cita médica para Tomás Racancoj',cuerpo:'Estado del paciente: en espera de cita. Motivo: Temblor en reposo más intenso. Referido a la especialidad de Neurología; la fundación asignará el médico y el horario.',fecha:'29/10/2026, 11:05:00'}]};
+let seq=100;const nid=()=>++seq;
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const Q=n=>'Q'+Number(n).toFixed(2);
+const pac=id=>db.pac.find(p=>p.id==id);
+const fam=p=>db.fam.find(f=>f.id==p.fam);
+const bruto=s=>CONSULTA+s.labs.reduce((a,l)=>a+l.costo,0)+s.meds.reduce((a,m)=>a+m.costo,0);
+const neto=s=>bruto(s)*(1-DESC);
+const val=id=>document.getElementById(id).value.trim();
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2800)}
+function mail(p,asunto,cuerpo){const f=fam(p);db.mail.push({para:f.correo,asunto,cuerpo,fecha:new Date().toLocaleString('es-GT')})}
+
+const TABS=[
+{id:'ini',t:'Inicio',r:['admin','medico','fund','esp','lab','caja'],v:vIni},
+{id:'res',t:'Registro de residentes',r:['admin','medico'],v:vRes},
+{id:'age',t:'Agenda médica',r:['admin','medico','fund','esp'],v:vAge},
+{id:'sol',t:'Evaluación y derivación',r:['admin','medico'],v:vSol},
+{id:'asig',t:'Programación de cita',r:['admin','fund'],v:vAsig},
+{id:'vis',t:'Consultas especialista',r:['admin','esp'],v:vVis},
+{id:'lab',t:'Laboratorio',r:['admin','lab'],v:()=>vLab(1)},
+{id:'far',t:'Farmacia',r:['admin','lab'],v:()=>vLab(0)},
+{id:'don',t:'Donaciones',r:['admin','caja'],v:vDon},
+{id:'caja',t:'Caja y facturación',r:['admin','caja'],v:vCaja},
+{id:'usr',t:'Usuarios',r:['admin'],v:vUsr},
+{id:'rep',t:'Reportes',r:['admin','caja'],v:vRep},
+{id:'mail',t:'Notificaciones',r:['admin','medico'],v:vMail}];
+let role='admin',tab='ini';
+function setRole(r){role=r;const ok=TABS.filter(x=>x.r.includes(r));tab=ok[0].id;draw()}
+function draw(){const ok=TABS.filter(x=>x.r.includes(role));
+nav.innerHTML=ok.map(x=>`<button class="${x.id==tab?'on':''}" onclick="tab='${x.id}';draw()">${x.t}</button>`).join('');
+main.innerHTML=TABS.find(x=>x.id==tab).v();nb.textContent=db.mail.length;fecha.textContent=new Date().toLocaleDateString('es-GT',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+
+function fld(id,lab,ph='',type='text',req=false){return `<label class="f">${lab}${req?' *':''}<input id="${id}" type="${type}" placeholder="${ph}"><span class="err" id="e_${id}"></span></label>`}
+function check(rules){let ok=true;rules.forEach(([id,msg,fn])=>{const v=val(id),bad=fn?!fn(v):!v;document.getElementById('e_'+id).textContent=bad?msg:'';document.getElementById(id).classList.toggle('bad',bad);if(bad)ok=false});return ok}
+
+function vRes(){return `<div class="card"><h2>Registro de residente</h2><p class="mut">Los campos con * son obligatorios.</p></div>
+<div class="card"><h3>Datos personales</h3><div class="grid">${fld('n','Nombre completo','Nombres y apellidos','text',1)}${fld('nac','Fecha de nacimiento','','date',1)}</div></div>
+<div class="card"><h3>Familiar responsable</h3><div class="grid">${fld('fn','Nombre del familiar','Nombre completo','text',1)}${fld('fc','Correo electrónico','nombre@correo.com','email',1)}</div></div>
+<div class="card"><h3>Información médica</h3><div class="grid">${fld('ps','Psicopatología','Describa si aplica')}${fld('mb','Medicamentos base','Medicamento y dosis')}</div>
+<div class="row"><button class="btn sec" onclick="draw()">Cancelar</button><button class="btn" onclick="guardarRes()">Guardar residente</button></div></div>
+<div class="card tbl"><h3>Residentes registrados</h3><table><tr><th>Nombre</th><th>Familiar</th><th>Psicopatología</th><th>Medicamentos base</th><th>Historial</th></tr>
+${db.pac.map(p=>`<tr><td>${esc(p.nombre)}</td><td>${esc(fam(p).nombre)}<br><span class="mut">${esc(fam(p).correo)}</span></td><td>${esc(p.psico)||'—'}</td><td>${esc(p.meds)||'—'}</td><td>${historial(p.id)}</td></tr>`).join('')}</table></div>`}
+function historial(id){const v=db.sol.filter(s=>s.pac==id&&s.estado=='Atendida');return v.length?v.map(s=>`${s.fecha}: ${esc(s.diag)}`).join('<br>'):'<span class="mut">Sin visitas</span>'}
+function guardarRes(){if(!check([['n','Escriba el nombre completo.'],['nac','Indique la fecha de nacimiento.'],['fn','Escriba el nombre del familiar.'],['fc','Escriba un correo válido, por ejemplo nombre@correo.com.',v=>/^\S+@\S+\.\S+$/.test(v)]]))return;
+const f={id:nid(),nombre:val('fn'),correo:val('fc')};db.fam.push(f);
+db.pac.push({id:nid(),nombre:val('n'),nac:val('nac'),fam:f.id,psico:val('ps'),meds:val('mb')});
+toast('Residente guardado.');draw()}
+
+function vSol(){const o=db.pac.map(p=>`<option value="${p.id}">${esc(p.nombre)}</option>`).join('');
+return `<div class="card"><h3>Nueva solicitud de cita</h3><div class="grid">
+<label class="f">Residente *<select id="sp">${o}</select></label>
+<label class="f">Especialidad *<select id="se">${ESPS.map(e=>`<option>${e}</option>`).join('')}</select></label>
+${fld('sm','Motivo de la visita','Describa el motivo','text',1)}${fld('sn','Enfermero(a) acompañante','Nombre','text',1)}</div>
+<div class="row"><button class="btn" onclick="crearSol()">Crear solicitud y avisar al familiar</button></div></div>
+<div class="card tbl"><h3>Solicitudes</h3><table><tr><th>Residente</th><th>Especialidad</th><th>Motivo</th><th>Acompaña</th><th>Estado</th></tr>
+${db.sol.map(s=>`<tr><td>${esc(pac(s.pac).nombre)}</td><td>${s.esp}</td><td>${esc(s.motivo)}</td><td>${esc(s.enf)}</td><td>${tag(s)}</td></tr>`).join('')||'<tr><td colspan="5" class="mut">Aún no hay solicitudes. Cree la primera arriba.</td></tr>'}</table></div>`}
+const tag=s=>`<span class="tag ${s.estado=='Pendiente'?'w':s.estado=='Atendida'?'o':''}">${s.estado}</span>`;
+function crearSol(){if(!check([['sm','Describa el motivo.'],['sn','Indique quién acompañará al residente.']]))return;
+const p=pac(val('sp')),s={id:nid(),pac:p.id,esp:val('se'),motivo:val('sm'),enf:val('sn'),estado:'Pendiente',labs:[],meds:[],pagado:false,pagadoFund:false};
+db.sol.push(s);
+mail(p,'Solicitud de cita médica para '+p.nombre,`Estado del paciente: en espera de cita. Motivo: ${s.motivo}. Referido a la especialidad de ${s.esp}; la fundación asignará el médico y el horario.`);
+toast('Solicitud creada y correo enviado al familiar.');draw()}
+
+function vAsig(){const l=db.sol.filter(s=>s.estado=='Pendiente');
+return `<div class="card"><h3>Solicitudes pendientes</h3>${l.map(s=>`<div class="card"><b>${esc(pac(s.pac).nombre)}</b> · ${s.esp}<div class="mut">${esc(s.motivo)} · acompaña ${esc(s.enf)}</div>
+<div class="row"><label class="f">Médico<select id="m${s.id}">${db.med.filter(m=>m.esp==s.esp).map(m=>`<option value="${m.id}">${m.nombre}</option>`).join('')||'<option value="">Sin médicos de esta especialidad</option>'}</select></label>
+<label class="f">Fecha<input id="d${s.id}" type="date"></label><label class="f">Hora<input id="h${s.id}" type="time"></label>
+<button class="btn" onclick="asignar(${s.id})">Asignar cita</button></div></div>`).join('')||'<p class="mut">No hay solicitudes pendientes.</p>'}</div>`}
+function asignar(id){const s=db.sol.find(x=>x.id==id),m=db.med.find(x=>x.id==val('m'+id)),d=val('d'+id),h=val('h'+id);
+if(!m||!d||!h){toast('Elija médico, fecha y hora.');return}
+Object.assign(s,{estado:'Asignada',medico:m,fecha:d,hora:h});const p=pac(s.pac);
+mail(p,'Cita asignada para '+p.nombre,`Referido a ${m.nombre} (${m.esp}) el ${d} a las ${h}. Acompañará ${s.enf}.`);
+toast('Cita asignada y familiar notificado.');draw()}
+
+function vVis(){const l=db.sol.filter(s=>s.estado=='Asignada');
+return `<div class="card"><h3>Citas asignadas</h3>${l.map(s=>{const p=pac(s.pac);return `<div class="card"><b>${esc(p.nombre)}</b> · ${s.medico.nombre} · ${s.fecha} ${s.hora}
+<div class="mut">Motivo: ${esc(s.motivo)}. Ficha: ${esc(p.psico)||'sin psicopatología registrada'}; medicamentos base: ${esc(p.meds)||'ninguno'}.</div>
+<div class="grid" style="margin-top:8px">${fld('x'+s.id,'Examen de laboratorio','Nombre del examen')}${fld('xc'+s.id,'Costo (Q)','0.00','number')}</div>
+<div class="row"><button class="btn sec" onclick="addLab(${s.id})">Solicitar examen</button></div>
+<div class="grid" style="margin-top:8px">${fld('r'+s.id,'Medicamento','Nombre y dosis')}${fld('rq'+s.id,'Cantidad','1','number')}${fld('rd'+s.id,'Días de aplicación','7','number')}${fld('rc'+s.id,'Costo (Q)','0.00','number')}</div>
+<div class="row"><button class="btn sec" onclick="addMed(${s.id})">Recetar</button></div>
+<p class="mut">Exámenes: ${s.labs.map(l=>esc(l.nombre)).join(', ')||'ninguno'} · Recetas: ${s.meds.map(m=>esc(m.nombre)).join(', ')||'ninguna'}</p>
+<div class="grid">${fld('g'+s.id,'Diagnóstico','','text',1)}${fld('o'+s.id,'Observaciones médicas')}</div>
+<div class="row"><button class="btn" onclick="cerrar(${s.id})">Cerrar visita</button></div></div>`}).join('')||'<p class="mut">No hay citas asignadas.</p>'}</div>`}
+function addLab(id){const s=db.sol.find(x=>x.id==id),n=val('x'+id);if(!n){toast('Escriba el nombre del examen.');return}s.labs.push({nombre:n,costo:+val('xc'+id)||0,resultado:''});toast('Examen solicitado.');draw()}
+function addMed(id){const s=db.sol.find(x=>x.id==id),n=val('r'+id);if(!n){toast('Escriba el medicamento.');return}s.meds.push({nombre:n,cant:+val('rq'+id)||1,dias:+val('rd'+id)||1,costo:+val('rc'+id)||0,entregado:false});toast('Medicamento recetado.');draw()}
+function cerrar(id){if(!check([['g'+id,'Escriba el diagnóstico.']]))return;const s=db.sol.find(x=>x.id==id);s.diag=val('g'+id);s.obs=val('o'+id);s.estado='Atendida';toast('Visita cerrada.');draw()}
+
+function vLab(L){const l=db.sol.filter(s=>L?s.labs.length:s.meds.length);
+return `<div class="card"><h3>${L?'Órdenes de laboratorio':'Recetas por entregar'}</h3>${l.map(s=>`<div class="card"><b>${esc(pac(s.pac).nombre)}</b> · ${s.medico?s.medico.nombre:''}
+${(L?s.labs:[]).map((x,i)=>`<div class="row"><span style="min-width:160px">${esc(x.nombre)} (${Q(x.costo)})</span><input id="res${s.id}_${i}" value="${esc(x.resultado)}" placeholder="Resultado" style="flex:1"><button class="btn sec" onclick="resultado(${s.id},${i})">Guardar resultado</button></div>`).join('')}
+${(L?[]:s.meds).map((m,i)=>`<div class="row"><span style="flex:1">${esc(m.nombre)} · ${m.cant} u. · ${m.dias} días (${Q(m.costo)})</span>${m.entregado?'<span class="tag o">Entregado</span>':`<button class="btn sec" onclick="entregar(${s.id},${i})">Registrar entrega</button>`}</div>`).join('')}</div>`).join('')||'<p class="mut">No hay órdenes ni recetas por atender.</p>'}</div>`}
+function resultado(id,i){db.sol.find(x=>x.id==id).labs[i].resultado=val(`res${id}_${i}`);toast('Resultado guardado.')}
+function entregar(id,i){db.sol.find(x=>x.id==id).meds[i].entregado=true;toast('Entrega registrada.');draw()}
+
+function vCaja(){const l=db.sol.filter(s=>s.estado=='Atendida');
+return `<div class="card tbl"><h3>Cobros por visita (con ${DESC*100}% de descuento de la fundación)</h3><table><tr><th>Residente</th><th>Total bruto</th><th>A cobrar al familiar</th><th>Familiar</th><th>Fundación</th></tr>
+${l.map(s=>`<tr><td>${esc(pac(s.pac).nombre)}</td><td>${Q(bruto(s))}</td><td>${Q(neto(s))}</td>
+<td>${s.pagado?'<span class="tag o">Cobrado</span>':`<button class="btn sec" onclick="cobrar(${s.id})">Registrar cobro</button>`}</td>
+<td>${s.pagadoFund?'<span class="tag o">Pagado</span>':`<button class="btn sec" onclick="pagarF(${s.id})">Registrar pago</button>`}</td></tr>`).join('')||'<tr><td colspan="5" class="mut">Aún no hay visitas atendidas.</td></tr>'}</table></div>
+<div class="card"><h3>Otro movimiento</h3><div class="grid"><label class="f">Tipo *<select id="mt"><option>Donación</option><option>Cuota mensual</option><option>Gasto</option></select></label>
+${fld('mo','Origen o concepto','Empresa, gobierno, particular, luz, agua…','text',1)}${fld('mm','Monto (Q)','0.00','number',1)}</div>
+<div class="row"><button class="btn" onclick="addMov()">Registrar movimiento</button></div></div>
+<div class="card tbl"><h3>Movimientos</h3><table><tr><th>Tipo</th><th>Concepto</th><th>Monto</th></tr>${db.mov.map(m=>`<tr><td>${m.tipo}</td><td>${esc(m.concepto)}</td><td>${Q(m.monto)}</td></tr>`).join('')||'<tr><td colspan="3" class="mut">Sin movimientos.</td></tr>'}</table></div>`}
+function cobrar(id){const s=db.sol.find(x=>x.id==id);s.pagado=true;db.mov.push({tipo:'Cobro',concepto:'Visita de '+pac(s.pac).nombre,monto:neto(s)});toast('Cobro registrado.');draw()}
+function pagarF(id){const s=db.sol.find(x=>x.id==id);s.pagadoFund=true;db.mov.push({tipo:'Pago a fundación',concepto:'Visita de '+pac(s.pac).nombre,monto:neto(s)});toast('Pago a la fundación registrado.');draw()}
+function addMov(){if(!check([['mo','Escriba el concepto.'],['mm','Ingrese un monto mayor que cero.',v=>+v>0]]))return;db.mov.push({tipo:val('mt'),concepto:val('mo'),monto:+val('mm')});toast('Movimiento registrado.');draw()}
+
+function vRep(){const at=db.sol.filter(s=>s.estado=='Atendida'),sum=(a,f)=>a.reduce((x,y)=>x+f(y),0);
+const ent=sum(db.mov.filter(m=>['Donación','Cuota mensual','Cobro'].includes(m.tipo)),m=>m.monto),gas=sum(db.mov.filter(m=>m.tipo=='Gasto'),m=>m.monto);
+return `<div class="card tbl"><h3>Costo de citas por residente</h3><table><tr><th>Residente</th><th>Citas</th><th>Exámenes</th><th>Medicamentos</th><th>Total con descuento</th><th>Pendiente de cobro</th></tr>
+${db.pac.map(p=>{const v=at.filter(s=>s.pac==p.id);return `<tr><td>${esc(p.nombre)}</td><td>${v.length}</td><td>${sum(v,s=>s.labs.length)}</td><td>${sum(v,s=>s.meds.length)}</td><td>${Q(sum(v,neto))}</td><td>${Q(sum(v.filter(s=>!s.pagado),neto))}</td></tr>`}).join('')}</table></div>
+<div class="card"><h3>Resumen financiero</h3><p>Deuda pendiente con la fundación: <b>${Q(sum(at.filter(s=>!s.pagadoFund),neto))}</b></p><p>Entradas (donaciones, cuotas y cobros): <b>${Q(ent)}</b> · Gastos: <b>${Q(gas)}</b></p></div>`}
+
+function vIni(){const hoy=new Date().toISOString().slice(0,10),k=(t,n)=>`<div class="kpi"><span>${t}</span><b>${n}</b></div>`;
+return `<p class="eyebrow">Gestión del asilo</p><h2 class="big">Inicio</h2><p class="mut">Asilo de Ancianos Cabeza de Algodón</p>
+<div class="kpis">${k('Residentes',db.pac.length)}${k('Citas de hoy',db.sol.filter(s=>s.fecha==hoy).length)}${k('Medicamentos',db.sol.reduce((a,s)=>a+s.meds.length,0))}${k('Notificaciones',db.mail.length)}</div>
+<div class="card"><p style="margin:0">Bienvenida, Yolanda</p><p style="margin:0">Resumen general de las actividades del asilo.</p></div>`}
+function vAge(){const l=db.sol.filter(s=>s.medico).sort((a,b)=>(a.fecha+a.hora).localeCompare(b.fecha+b.hora));
+return `<div class="card tbl"><h3>Agenda médica</h3><table><tr><th>Fecha</th><th>Hora</th><th>Residente</th><th>Médico</th><th>Acompaña</th><th>Estado</th></tr>${l.map(s=>`<tr><td>${s.fecha}</td><td>${s.hora}</td><td>${esc(pac(s.pac).nombre)}</td><td>${s.medico.nombre} (${s.medico.esp})</td><td>${esc(s.enf)}</td><td>${tag(s)}</td></tr>`).join('')||'<tr><td colspan="6" class="mut">No hay citas programadas. Se crean en Evaluación y derivación y se asignan en Programación de cita.</td></tr>'}</table></div>`}
+function vDon(){const l=db.mov.filter(m=>m.tipo=='Donación');
+return `<div class="card"><h3>Registrar donación</h3><div class="grid"><label class="f">Tipo de donante<select id="dt"><option>Empresa nacional</option><option>Empresa internacional</option><option>Gobierno</option><option>Persona particular</option></select></label>${fld('dn','Nombre del donante','','text',1)}${fld('dm','Monto (Q)','0.00','number',1)}</div><div class="row"><button class="btn" onclick="addDon()">Registrar donación</button></div></div>
+<div class="card tbl"><h3>Donaciones recibidas</h3><table><tr><th>Donante</th><th>Monto</th></tr>${l.map(m=>`<tr><td>${esc(m.concepto)}</td><td>${Q(m.monto)}</td></tr>`).join('')||'<tr><td colspan="2" class="mut">Aún no hay donaciones registradas.</td></tr>'}</table><p>Total: <b>${Q(l.reduce((a,m)=>a+m.monto,0))}</b></p></div>`}
+function addDon(){if(!check([['dn','Escriba el nombre del donante.'],['dm','Ingrese un monto mayor que cero.',v=>+v>0]]))return;db.mov.push({tipo:'Donación',concepto:val('dn')+' ('+val('dt')+')',monto:+val('dm')});toast('Donación registrada.');draw()}
+function vUsr(){const u=[['Yolanda Ajiataz','Administradora'],['Médico general','Médico general'],['Fundación','Fundación'],['Especialista','Médico especialista'],['Laboratorio y farmacia','Laboratorio y farmacia'],['Caja','Caja']];
+return `<div class="card tbl"><h3>Usuarios y roles</h3><table><tr><th>Usuario</th><th>Rol</th><th>Estado</th></tr>${u.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td><span class="tag o">Activo</span></td></tr>`).join('')}</table><p class="mut">Demostración: la gestión real de usuarios usará contraseñas con hash, como se definió en la Fase 1.</p></div>`}
+function vMail(){return `<div class="card tbl"><h3>Correos enviados a familiares</h3><table><tr><th>Fecha</th><th>Para</th><th>Asunto</th><th>Mensaje</th></tr>
+${db.mail.map(m=>`<tr><td>${m.fecha}</td><td>${esc(m.para)}</td><td>${esc(m.asunto)}</td><td>${esc(m.cuerpo)}</td></tr>`).join('')||'<tr><td colspan="4" class="mut">Aún no se ha enviado ningún correo.</td></tr>'}</table>
+<p class="mut">En esta demostración el envío se simula. En producción lo realizaría el microservicio de notificaciones por SMTP.</p></div>`}
+const H0='b71ed14c1f382ee0137558210a7151b0030bc4cc78372af239374ce39502607a';
+const USERS=[['yolanda@cabezadealgodon.org','Yolanda Ajiataz','admin'],['medico@cabezadealgodon.org','Médico general','medico'],['fundacion@cabezadealgodon.org','Fundación','fund'],['especialista@cabezadealgodon.org','Médico especialista','esp'],['laboratorio@cabezadealgodon.org','Laboratorio y farmacia','lab'],['caja@cabezadealgodon.org','Caja','caja']];
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('algodon:'+s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+let intentos=0,bloqueo=0;
+async function entrar(){
+if(Date.now()<bloqueo){lerr.textContent='Demasiados intentos. Espere 30 segundos e intente de nuevo.';return}
+let h;try{h=await sha(lpass.value)}catch(e){lerr.textContent='No se pudo verificar la contraseña en este navegador.';return}
+const c=lemail.value.trim().toLowerCase(),u=USERS.find(x=>x[0]==c);
+if(!u||h!=H0){intentos++;if(intentos>=5){bloqueo=Date.now()+30000;intentos=0}lerr.textContent='Correo o contraseña incorrectos.';return}
+intentos=0;lerr.textContent='';lpass.value='';login.style.display='none';app.style.display='flex';usr.textContent=u[1];rol.value=u[2];setRole(u[2])}
+function logout(){app.style.display='none';login.style.display='flex';lemail.value='';lemail.focus()}
+draw();
+</script>
+</body>
+</html>
